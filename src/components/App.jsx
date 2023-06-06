@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
+import { useSelector } from 'react-redux';
 
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import ContactList from './ContactList';
@@ -7,15 +8,20 @@ import Filter from './Filter';
 
 const initContacts = [
   { id: 'id-1', name: 'Bradley Cooper', number: '443-89-12' },
-    { id: 'id-2', name: 'Elijah Jordan', number: '443-89-12' },
-    { id: 'id-3', name: 'Aaron Paul', number: '645-17-79' },
-    { id: 'id-4', name: ' Viggo Peter', number: '227-91-26' },
+  { id: 'id-2', name: 'Elijah Jordan', number: '443-89-12' },
+  { id: 'id-3', name: 'Aaron Paul', number: '645-17-79' },
+  { id: 'id-4', name: ' Viggo Peter', number: '227-91-26' },
 ];
+
+ 
 
 export function App() {
   const [contacts, setContacts] = useState(() => {
     return JSON.parse(localStorage.getItem('contacts')) || initContacts});
   const [filter, setFilter] = useState(''); 
+
+const reduxContacts = useSelector(state => state.contacts);
+console.log('reduxCont: ', reduxContacts)
 
   useEffect(() => {
     return window.localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -69,7 +75,7 @@ export function App() {
         <>
           <Filter stateName={filter} onChange={handleChange}></Filter>
           <ContactList
-            contacts={findContact()}
+            // contacts={findContact()}
             onClick={handleClick}
           ></ContactList>
         </>

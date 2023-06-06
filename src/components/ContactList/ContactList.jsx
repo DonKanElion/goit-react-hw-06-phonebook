@@ -1,10 +1,16 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+
 
 import ContactListItem from './ContactListItem';
 import s from './ContactList.module.css';
 
-const ContactList = ({ contacts, onClick }) => {
+const ContactList = ({ onClick }) => {
+
+  const contacts = useSelector(getContacts);
+
   return (
     <div className={classNames(s.box, s.contactForm)}>
       <h3 className={s.title_comp}>Contacts</h3>
@@ -27,7 +33,7 @@ const ContactList = ({ contacts, onClick }) => {
 };
 
 ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired,
+  // contacts: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
