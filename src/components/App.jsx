@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { useSelector } from 'react-redux';
+
 
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import ContactList from './ContactList';
@@ -12,8 +13,6 @@ const initContacts = [
   { id: 'id-3', name: 'Aaron Paul', number: '645-17-79' },
   { id: 'id-4', name: ' Viggo Peter', number: '227-91-26' },
 ];
-
- 
 
 export function App() {
   const [contacts, setContacts] = useState(() => {
@@ -32,28 +31,29 @@ console.log('reduxCont: ', reduxContacts)
     setFilter(value);
   };
 
-  const addContact = (name, number) => {
-    const newContact = {
-      id: 'id-' + nanoid(2),
-      name,
-      number,
-    };
+  // const addContact = (name, number) => {
+  //   const newContact = {
+  //     id: 'id-' + nanoid(2),
+  //     name,
+  //     number,
+  //   };
 
-     setContacts(prevState => ([newContact, ...contacts]))
+  //    setContacts(prevState => ([newContact, ...contacts]))
 
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-    return;
-  };
+  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  //   return;
+  // };
 
-  const handleClick = id => {
-    setContacts(prevState => (prevState.filter(contact => contact.id !== id)));
-  };
 
-  const findContact = () => {
-    return contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(filter.toLowerCase())
-    );
-  };
+  // const handleClick = id => {
+  //   setContacts(prevState => (prevState.filter(contact => contact.id !== id)));
+  // };
+
+  // const findContact = () => {
+  //   return contacts.filter(contact =>
+  //     contact.name.toLocaleLowerCase().includes(filter.toLowerCase())
+  //   );
+  // };
 
   return (
     <div
@@ -67,7 +67,9 @@ console.log('reduxCont: ', reduxContacts)
     >
       <h1 className="hero_title">Phonebook</h1>
 
-      <ContactForm addContact={addContact} contacts={contacts}></ContactForm>
+      {/* <ContactForm addContact={addContact} contacts={contacts}></ContactForm> */}
+      <ContactForm contacts={contacts}></ContactForm>
+
 
       {/* <h2 className='title'>Contacts</h2> */}
 
@@ -76,7 +78,7 @@ console.log('reduxCont: ', reduxContacts)
           <Filter stateName={filter} onChange={handleChange}></Filter>
           <ContactList
             // contacts={findContact()}
-            onClick={handleClick}
+            // onClick={handleClick}
           ></ContactList>
         </>
       ) : (

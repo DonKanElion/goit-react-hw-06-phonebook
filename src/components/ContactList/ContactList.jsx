@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 
-
 import ContactListItem from './ContactListItem';
 import s from './ContactList.module.css';
 
 const ContactList = ({ onClick }) => {
-
   const contacts = useSelector(getContacts);
 
   return (
@@ -37,4 +35,4 @@ ContactList.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default ContactList
+export default ContactList;

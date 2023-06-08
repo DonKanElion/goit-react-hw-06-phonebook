@@ -1,14 +1,18 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import s from './ContactForm.module.css';
+import { addContact } from 'redux/actions';
 
-export function ContactForm({ addContact, contacts }) {
-
+// export function ContactForm({ addContact, contacts }) {
+export function ContactForm({ contacts }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -35,7 +39,8 @@ export function ContactForm({ addContact, contacts }) {
     );
 
     if (!checkContact) {
-      addContact(name, number);
+      dispatch(addContact(name, number))
+      // addContact(name, number);
       return resetAll();
     }
 
@@ -103,7 +108,7 @@ export function ContactForm({ addContact, contacts }) {
 }
 
 ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
+  // addContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
 };
 
