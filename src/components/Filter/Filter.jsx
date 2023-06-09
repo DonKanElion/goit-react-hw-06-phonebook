@@ -1,9 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { findContact } from 'redux/actions';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 
 import s from '../ContactList/ContactList.module.css';
 
-const Filter = ({ stateName, onChange }) => {
+const Filter = ({ stateName }) => {
+  const filterValue = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+
+  const handleChange = evt => {
+    const { value } = evt.target;
+    dispatch(findContact(value));
+  };
+
   return (
     <div className={classNames(s.box, s.contactList)}>
       <label className={s.text}>
@@ -11,18 +20,13 @@ const Filter = ({ stateName, onChange }) => {
         <input
           type="text"
           name="filter"
-          value={stateName}
-          onChange={onChange}
+          value={filterValue}
+          onChange={handleChange}
           className={s.input}
         />
       </label>
     </div>
   );
 };
-
-Filter.propTypes = {
-  stateName: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-}
 
 export default Filter;

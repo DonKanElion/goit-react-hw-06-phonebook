@@ -18,8 +18,16 @@ export const rootReducer = (state = initialState, action) => {
     case 'contacts/deletedContact': {
       return {
         ...state,
-        contacts: state.contacts.filter(contact => contact.id !== action.payload),
+        contacts: state.contacts.filter(
+          contact => contact.id !== action.payload
+        ),
       };
+    }
+    case 'contacts/findContact': {
+      return {
+      ...state,
+      filter: state.filter = action.payload,
+      }
     }
 
     default:

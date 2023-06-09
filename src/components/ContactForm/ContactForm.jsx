@@ -7,7 +7,6 @@ import classNames from 'classnames';
 import s from './ContactForm.module.css';
 import { addContact } from 'redux/actions';
 
-// export function ContactForm({ addContact, contacts }) {
 export function ContactForm({ contacts }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -40,7 +39,6 @@ export function ContactForm({ contacts }) {
 
     if (!checkContact) {
       dispatch(addContact(name, number))
-      // addContact(name, number);
       return resetAll();
     }
 
@@ -108,7 +106,6 @@ export function ContactForm({ contacts }) {
 }
 
 ContactForm.propTypes = {
-  // addContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
 };
 

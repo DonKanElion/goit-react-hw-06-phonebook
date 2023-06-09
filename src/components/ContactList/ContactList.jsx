@@ -2,19 +2,32 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
+import { getFilterValue } from 'redux/selectors';
 
 import ContactListItem from './ContactListItem';
 import s from './ContactList.module.css';
 
+const getVisibleContacts = (contacts, query) => {
+  if (query !== '') {
+    return contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(query.toLowerCase())
+    );
+  }
+  return contacts;
+};
+
 const ContactList = ({ onClick }) => {
   const contacts = useSelector(getContacts);
+  const query = useSelector(getFilterValue);
+
+  const visibleContacts = getVisibleContacts(contacts, query);
 
   return (
     <div className={classNames(s.box, s.contactForm)}>
       <h3 className={s.title_comp}>Contacts</h3>
 
       <ul className={s.list}>
-        {contacts.map(({ id, name, number }) => {
+        {visibleContacts.map(({ id, name, number }) => {
           return (
             <ContactListItem
               key={id}
@@ -31,7 +44,6 @@ const ContactList = ({ onClick }) => {
 };
 
 ContactList.propTypes = {
-  // contacts: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
