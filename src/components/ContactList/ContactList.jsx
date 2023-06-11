@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { getFilterValue } from 'redux/selectors';
+import { getContacts, getFilterValue } from 'redux/selectors';
 
 import ContactListItem from './ContactListItem';
 import s from './ContactList.module.css';
@@ -21,6 +20,7 @@ const ContactList = ({ onClick }) => {
   const query = useSelector(getFilterValue);
 
   const visibleContacts = getVisibleContacts(contacts, query);
+  console.log(visibleContacts);
 
   return (
     <div className={classNames(s.box, s.contactForm)}>

@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { addContact } from 'redux/contactsSlice';
 
 import s from './ContactForm.module.css';
-import { addContact } from 'redux/actions';
 
 export function ContactForm({ contacts }) {
   const [name, setName] = useState('');
@@ -22,7 +22,7 @@ export function ContactForm({ contacts }) {
       case 'number':
         return setNumber(value);
       default:
-      throw new Error(`Unsupported type of ${name}`);
+        throw new Error(`Unsupported type of ${name}`);
     }
   };
 
@@ -38,7 +38,7 @@ export function ContactForm({ contacts }) {
     );
 
     if (!checkContact) {
-      dispatch(addContact(name, number))
+      dispatch(addContact(name, number));
       return resetAll();
     }
 

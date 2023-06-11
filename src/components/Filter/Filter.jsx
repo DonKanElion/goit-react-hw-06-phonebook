@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { findContact } from 'redux/actions';
+import { findContact } from 'redux/contactsSlice';
 import classNames from 'classnames';
 
 import s from '../ContactList/ContactList.module.css';
