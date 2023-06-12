@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { addContact } from 'redux/contactsSlice';
 
 import s from './ContactForm.module.css';
 

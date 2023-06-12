@@ -1,7 +1,7 @@
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getContacts, getFilterValue } from 'redux/selectors';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import ContactListItem from './ContactListItem';
 import s from './ContactList.module.css';

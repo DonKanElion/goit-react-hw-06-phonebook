@@ -1,12 +1,12 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-// import { nanoid } from 'nanoid';
 
 const initialState = {
   contacts: [
-    { id: 'id-1', name: 'Toolkit Testing', number: '443-89-12' },
-    { id: 'id-2', name: 'Flying good!', number: '443-89-12' },
-    { id: 'id-3', name: 'Aaron Paul', number: '645-17-79' },
-    { id: 'id-4', name: 'My name is Mazafaq', number: '642-17-79' },
+    { id: 'id-1', name: 'ToolKit Testing', number: '443-89-12' },
+    { id: 'id-2', name: 'Bradley Cooper', number: '443-89-12' },
+    { id: 'id-3', name: 'Elijah Jordan', number: '443-89-12' },
+    { id: 'id-4', name: 'Aaron Paul', number: '645-17-79' },
+    { id: 'id-5', name: 'Viggo Peter', number: '227-91-26' },
   ],
   filter: '',
 };
