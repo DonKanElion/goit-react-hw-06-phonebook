@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { ContactForm } from 'components/ContactForm/ContactForm';
-import ContactList from './ContactList';
+import ContactList from './ContactList/ContactList';
 import Filter from './Filter';
 
 const initContacts = [

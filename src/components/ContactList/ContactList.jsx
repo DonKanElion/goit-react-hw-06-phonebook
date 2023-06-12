@@ -20,7 +20,6 @@ const ContactList = ({ onClick }) => {
   const query = useSelector(getFilterValue);
 
   const visibleContacts = getVisibleContacts(contacts, query);
-  console.log(visibleContacts);
 
   return (
     <div className={classNames(s.box, s.contactForm)}>
