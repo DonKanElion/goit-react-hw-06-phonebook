@@ -91,9 +91,7 @@ export function ContactForm({ contacts }) {
             required
           />
         </label>
-      </form>
-
-      <button
+        <button
         type="submit"
         name="addContact"
         onClick={handleSubmit}
@@ -101,6 +99,9 @@ export function ContactForm({ contacts }) {
       >
         Add contact
       </button>
+      </form>
+
+    
     </div>
   );
 }

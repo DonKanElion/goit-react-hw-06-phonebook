@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getContacts, getFilterValue } from 'redux/selectors';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 
 import ContactListItem from './ContactListItem';
 import s from './ContactList.module.css';
@@ -15,7 +14,7 @@ const getVisibleContacts = (contacts, query) => {
   return contacts;
 };
 
-const ContactList = ({ onClick }) => {
+const ContactList = () => {
   const contacts = useSelector(getContacts);
   const query = useSelector(getFilterValue);
 
@@ -33,17 +32,12 @@ const ContactList = ({ onClick }) => {
               id={id}
               name={name}
               number={number}
-              onClick={onClick}
             ></ContactListItem>
           );
         })}
       </ul>
     </div>
   );
-};
-
-ContactList.propTypes = {
-  onClick: PropTypes.func.isRequired,
 };
 
 export default ContactList;
